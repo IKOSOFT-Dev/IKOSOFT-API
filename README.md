@@ -75,16 +75,16 @@ Cloud salons benefit from a number of features, like enhanced slots search, smar
 
 #### Getting the salon settings and list of services
 First step would be to get the salon information.<br>
-**GET** /api/v1/administration/salon-info endpoint will return the information about the salon.<br>
-**GET** /api/v1/administration/settings endpoint will return the online booking related settings of the salon. Things like the slots duration, number of days available for online booking, can the customer cancel appointments, notification to customer or to the salon settings and so on.<br>
-**GET** /api/v1/booking/services will return the list of services, packages, families and employees
+**GET /api/v1/administration/salon-info** endpoint will return the information about the salon.<br>
+**GET /api/v1/administration/settings** endpoint will return the online booking related settings of the salon. Things like the slots duration, number of days available for online booking, can the customer cancel appointments, notification to customer or to the salon settings and so on.<br>
+**GET /api/v1/booking/services** will return the list of services, packages, families and employees
 Besides this we will have the competences of the employees, and the service prices by employee.
 The parameters to pass to this method are:
 - customerId - the customerId of the logged in user; optional
 - maxServicesInPackages - pass the value obtained from **GET** /api/v1/settings response; optional with a default value of 10.
 - familyId - if we want to get only services from a certain family; leave null or empty and it will return all services and packages from all families
 - startDate - the start date of the search; this will impact the response based on the availability of services-employees during that period. Usually you would pass today.
-- endDate - the end data of the search; usually this will be startDate + the parameter * *NbDaysForLimitingAppointments* * from /settings response.
+- endDate - the end data of the search; usually this will be startDate + the parameter *NbDaysForLimitingAppointments* from /settings response.
 The response contains the list of employees, services, packages and service families.
 Each service has a list of Prices; the prices list contains the price per employee of that service plus contains only the qualified employees for that service.
 The same applies for Packages.
