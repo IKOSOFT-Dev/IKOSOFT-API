@@ -28,6 +28,43 @@ In case of a non-successful status code, aka something outside the 200-299 range
 	"ErrorDescription: "The account was disabled"
 }
 ```
+
+The list of application error codes can be found below.
+```
+public enum ApplicationErrorCode
+    {
+        InvalidArguments = 1,
+        InvalidLogin = 2,
+        InstituteNotFound = 3,
+        OnlineServicesNotEnabled = 4,
+        InstituteDisabled = 5,
+        InvalidAPIKey = 6,
+        ExpiredAPIKey = 7,
+        CustomerNotFound = 8,
+        CustomerAlreadyExists = 9,
+        InstituteOffline = 10,
+        DeamonNotReachable = 11,
+        OperationNotImplemented = 12,
+        MultipleLocationsNotAllowed = 13,
+        LocationNotFound = 14,
+
+        UrlDomainAlreadyExists = 15,
+        UrlDomainDoesNotExist = 16,
+        ShortUrlAlreadyExists = 17,
+        ShortUrlDoesNotExist = 18,
+        UrlStatsDoesNotExist = 19,
+
+        AuthorizationFailed = 20,
+
+        AudienceNotFound = 21,
+
+        BeautyCardNotFound = 22,
+
+        LibraryNotFound = 100,
+
+        GeneralError = 99,
+    }
+```
 The error code and description should give more insights about why the request could not be fulfilled, not just a 400 Bad Request for example.
 
 ### Salon types
@@ -46,7 +83,11 @@ The parameters to pass to this method are:
 - customerId - the customerId of the logged in user; optional
 - maxServicesInPackages - pass the value obtained from **GET** /api/v1/settings response; optional with a default value of 10.
 - familyId - if we want to get only services from a certain family; leave null or empty and it will return all services and packages from all families
-- startDate - the 
+- startDate - the start date of the search; this will impact the response based on the availability of services-employees during that period. Usually you would pass today.
+- endDate - the end data of the search; usually this will be startDate + the parameter * *NbDaysForLimitingAppointments* * from /settings response.
+The response contains the list of employees, services, packages and service families.
+Each service has a list of Prices; the prices list contains the price per employee of that service plus contains only the qualified employees for that service.
+The same applies for Packages.
 
 #### Adding a service to the booking basket
 Once we have the list of services we want to book we can select a skilled employee or leave the API choose one for us.
