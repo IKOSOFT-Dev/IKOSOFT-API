@@ -89,18 +89,30 @@ The response contains the list of employees, services, packages and service fami
 Each service has a list of Prices; the prices list contains the price per employee of that service plus contains only the qualified employees for that service.
 The same applies for Packages.
 
+#### Customer
+The IKOSOFT API allows you to create customers in the Merlin X2 system. You can also update the customer profile information, delete a customer or query for customers.<br>
+**POST /api/v1/customer** will create a new customer; a successful response contains the new CustomerId; in the case the customer already exists, the CustomerExists will be true and customerId will be empty.<br>
+**PUT /api/v1/customer** will modify customer information.<br>
+
+**GET /api/v1/customer** will retrieve customer data given a customerId.<br>
+**GET /api/v1/customers** will search customers by email and/or mobile phone.<br>
+**GET /api/v1/customer/exists** will tell you if a customer with the given login already exists or not.v
+**GET /api/v1/customers/search** will search customers by different properties, like first name, last name, city, etc.<br>
+**POST /api/v1/booking/login** will login the customer<br>
+**GET /api/v1/booking/customer-appointments** will retrieve the customer future appointments.<br>
+**DELETE /api/v1/booking/customer-appointments** will delete a customer appointments using the appointmentId.<br>
+
+The customer can login via our API, he can query for slots, book appointments and buy vouchers.
+He can also view his next appointments by using GET api/v1/customer/appointmentsssss
+Depending on salon settings he can also delete using DELETE api/customer/appointmentsssss
+
+
+
 #### Adding a service to the booking basket
 Once we have the list of services we want to book we can select a skilled employee or leave the API choose one for us.
 Using **POST** api/v1/booking/slots we query for available slots, sending our shopping basket to the API.
 Once a slots are retrieved, the customer can choose the slot it wants, and make a PUT request to create the appointment.
 **PUT** api/v1/booking/slots does this, creates the appointment and depending on settings, it can notify the customer/salon owner about this new booking.
-
-#### Customer perspective
-Customers can be created in a salon database. They can also update their profile.
-The customer can login via our API, it can query for slots, book appointments and buy vouchers.
-He can also view his next appointments by using GET api/v1/customer/appointmentsssss
-Depending on salon settings he can also delete using DELETE api/customer/appointmentsssss
-
 
 
 
