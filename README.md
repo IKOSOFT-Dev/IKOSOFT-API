@@ -9,19 +9,19 @@ The swagger page of the IKOSOFT API can be found here https://api.ikosoft.net
 ## Usage
 
 ### Authentication
-IKOSOFT authenticates API requests using the apiKey. Based on their permissions the api keys can give you access to all API endpoints or just to a limited number of endpoints.
-All requests need an apiKey in the HTTP header of the request, otherwise a 401 Unauthorized response will be returned  by the API.
+IKOSOFT authenticates API requests using the apiKey. Based on their permissions the api keys can give you access to all API endpoints or just to a limited number of endpoints.<br>
+All requests need an apiKey in the HTTP header of the request, otherwise a 401 Unauthorized response will be returned  by the API.<br>
 In the case the apiKey does not have the permissions to access a certain endpoint a 403 Forbidden response will be returned.
 
 ### Header parameters
-Most requests need 2 parameters to be passed in the HTTP Header.
-The parameters are the "apiKey" and the "instituteId".
-The instituteId is the ID of the salon/institute that is assigned in the Merlin X2 software.
+Most requests need 2 parameters to be passed in the HTTP Header.<br>
+The parameters are the "apiKey" and the "instituteId".<br>
+The instituteId is the ID of the salon/institute that is assigned in the Merlin X2 software.<br>
 
 ### Input and output parameters
-All the input and output parameters can be found in the swagger documentation mentioned above.
-Each method also specifies the possible HTTP status codes.
-In case of a non-successful status code, aka something outside the 200-299 range, the IKOSOFT API will return the status code (400,401,403,403, 500 for example) and also the following json structure in the response.
+All the input and output parameters can be found in the swagger documentation mentioned above.<br>
+Each method also specifies the possible HTTP status codes.<br>
+In case of a non-successful status code, aka something outside the 200-299 range, the IKOSOFT API will return the status code (400,401,403,403, 500 for example) and also the following json structure in the response.<br>
 ```JSON response in case of error
 {
 	"ErrorCode":3,
@@ -42,6 +42,11 @@ First step would be to get the salon information.<br>
 **GET** /api/v1/administration/settings endpoint will return the online booking related settings of the salon. Things like the slots duration, number of days available for online booking, can the customer cancel appointments, notification to customer or to the salon settings and so on.<br>
 **GET** /api/v1/booking/services will return the list of services, packages, families and employees
 Besides this we will have the competences of the employees, and the service prices by employee.
+The parameters to pass to this method are:
+- customerId - the customerId of the logged in user; optional
+- maxServicesInPackages - pass the value obtained from **GET** /api/v1/settings response; optional with a default value of 10.
+- familyId - if we want to get only services from a certain family; leave null or empty and it will return all services and packages from all families
+- startDate - the 
 
 #### Adding a service to the booking basket
 Once we have the list of services we want to book we can select a skilled employee or leave the API choose one for us.
