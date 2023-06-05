@@ -113,8 +113,8 @@ In order to book an appointment we need to first:
 - book the appointment
 <br>
 Once a slots are retrieved, the customer can choose the slot it wants, and make a PUT request to create the appointment.<br>
-The parameters to pass to this method are:
-<br>
+The parameters to pass to this method are:<br>
+
 For on premises salons<br>
 **POST /api/v1/booking/slots** we query for available slots, 1 day at a time, sending our shopping basket to the API.
 - startDate - the startDate, usually today
