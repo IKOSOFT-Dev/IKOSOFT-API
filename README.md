@@ -115,12 +115,11 @@ In order to book an appointment we need to first:
 Once a slots are retrieved, the customer can choose the slot it wants, and make a PUT request to create the appointment.<br>
 The parameters to pass to this method are:
 
-For on premises salons
+For on premises salons<br>
 **POST /api/v1/booking/slots** we query for available slots, 1 day at a time, sending our shopping basket to the API.
 - startDate - the startDate, usually today
-- endDate - the same as startDate, we query 1 day at a time
-<br>
-For cloud salons
+- endDate - the same as startDate, we query 1 day at a time<br>
+For cloud salons<br>
 **POST /api/v1/booking/slots/days** we get the slots for the whole period
 The parameters to pass to this method are:
 - startDate - the startDate, usually today
@@ -137,6 +136,7 @@ Parameters for both methods
 <br>
 
 **PUT api/v1/booking/slots** creates the appointment and depending on settings it can notify the customer/salon owner about this new booking. Notification is via email.
+In case of success the API returns a 201 response containing the AppointmentId of the newly booked appointment.
 
 
 
