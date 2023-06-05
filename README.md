@@ -113,6 +113,7 @@ In order to book an appointment we need to first:
 - book the appointment
 <br>
 Once a slots are retrieved, the customer can choose the slot it wants, and make a PUT request to create the appointment.<br>
+The information that a salon is on cloud or on premises can be obtained from the IsCloudEnabled parameter in the GET /salon-info response.<br>
 The parameters to pass to this method are:<br>
 
 For on premises salons<br>
