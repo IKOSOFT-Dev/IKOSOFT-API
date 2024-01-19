@@ -117,9 +117,9 @@ The information that a salon is on cloud or on premises can be obtained from the
 The parameters to pass to this method are:<br>
 
 For on premises salons<br>
-**POST /api/v1/booking/slots** we query for available slots, 1 day at a time, sending our shopping basket to the API.
+**POST /api/v1/booking/slots** we query for available slots, 1 day at a time(for on premises salons) or for the whole booking period(cloud salons), sending our shopping basket to the API.
 - startDate - the startDate, usually today
-- endDate - the same as startDate, we query 1 day at a time<br>
+- endDate - the end date<br>
 
 For cloud salons<br>
 **POST /api/v1/booking/slots/days** we get the slots for the whole period
