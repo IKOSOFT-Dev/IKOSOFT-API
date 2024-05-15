@@ -121,12 +121,6 @@ For on premises salons<br>
 - startDate - the startDate, usually today
 - endDate - the end date<br>
 
-For cloud salons<br>
-**POST /api/v1/booking/slots/days** we get the slots for the whole period
-The parameters to pass to this method are:
-- startDate - the startDate, usually today
-- endDate - startDate + the parameter *NbDaysForLimitingAppointments* from /settings response.
-
 Parameters for both methods
 - locationId - the parameter from /salon-info response
 - customerId - optional for querying slots, mandatory for booking the appointment
