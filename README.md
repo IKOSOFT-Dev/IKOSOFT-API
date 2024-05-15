@@ -116,7 +116,7 @@ Once a slots are retrieved, the customer can choose the slot it wants, and make 
 The information that a salon is on cloud or on premises can be obtained from the IsCloudEnabled parameter in the GET /salon-info response.<br>
 The parameters to pass to this method are:<br>
 
-For on premises salons<br>
+For on premises and cloud salons<br>
 **POST /api/v1/booking/slots** we query for available slots, 1 day at a time(for on premises salons) or for the whole booking period(cloud salons), sending our shopping basket to the API.
 - startDate - the startDate, usually today
 - endDate - the end date<br>
